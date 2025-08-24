@@ -20,4 +20,12 @@ class HealthDataCollectionViewCell: UICollectionViewCell {
         bgView.layer.cornerRadius = 10
     }
 
+    func bindData(data:HealthActivityData) {
+        lblStepCount.text = data.mainInfo
+        lblTarget.text = data.subInfo
+        lblTotal.text = data.unit
+        bgView.backgroundColor = data.color
+        stepImage.image = UIImage(systemName: data.iconName)
+
+    }
 }

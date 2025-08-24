@@ -155,6 +155,8 @@
 				INFOPLIST_FILE = HabitApp/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app wants to read your health data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app wants to write your health data";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use your location to track activities in the background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show your activity on the map.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = DashBoardViewController.xib;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -165,10 +167,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.muzyfy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.HabitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = muzyfy_devprovisi_25july;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = trackit_devProvision_21Aug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -190,6 +192,8 @@
 				INFOPLIST_FILE = HabitApp/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app wants to read your health data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app wants to write your health data";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use your location to track activities in the background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show your activity on the map.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = DashBoardViewController.xib;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -200,10 +204,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.muzyfy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.HabitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = muzyfy_devprovisi_25july;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = trackit_devProvision_21Aug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
