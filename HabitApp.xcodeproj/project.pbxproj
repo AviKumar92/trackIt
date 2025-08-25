@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		ACE0E0E62E5B7C62008F393D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = ACE0E0E52E5B7C62008F393D /* FSCalendar */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AC5FDB342E4D9C04008CEF9E /* HabitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD4284C2E564D310052CE01 /* noida_test_route.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = noida_test_route.gpx; path = ../../../noida_test_route.gpx; sourceTree = "<group>"; };
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE0E0E62E5B7C62008F393D /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +85,7 @@
 			);
 			name = HabitApp;
 			packageProductDependencies = (
+				ACE0E0E52E5B7C62008F393D /* FSCalendar */,
 			);
 			productName = HabitApp;
 			productReference = AC5FDB342E4D9C04008CEF9E /* HabitApp.app */;
@@ -109,6 +115,9 @@
 			);
 			mainGroup = AC5FDB2B2E4D9C04008CEF9E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				ACE0E0E42E5B7C62008F393D /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AC5FDB352E4D9C04008CEF9E /* Products */;
 			projectDirPath = "";
@@ -172,6 +181,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = trackit_devProvision_21Aug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HabitApp/Fscalender-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -209,6 +219,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = trackit_devProvision_21Aug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HabitApp/Fscalender-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -357,6 +368,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ACE0E0E42E5B7C62008F393D /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ACE0E0E52E5B7C62008F393D /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACE0E0E42E5B7C62008F393D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC5FDB2C2E4D9C04008CEF9E /* Project object */;
 }

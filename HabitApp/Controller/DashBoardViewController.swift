@@ -27,7 +27,21 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         userTableView.register(nibcell, forCellReuseIdentifier: "DashBoardTableViewCell")
         userTableView.dataSource = self
         userTableView.delegate = self
+        addCalender()
+        
        
+    }
+    
+    @IBAction func onClickPlusBtn(_ sender: Any) {
+        present(AddHabitViewController(), animated: true)
+    }
+    
+    func addCalender() {
+        let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 40, height: 110))
+//        calendar.dataSource = self
+//        calendar.delegate = self
+        lblDate.addSubview(calendar)
+       // self.calendar = calendar
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3

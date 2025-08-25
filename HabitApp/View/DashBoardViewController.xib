@@ -67,6 +67,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMc-Px-hmg">
+                    <rect key="frame" x="288" y="709" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="LNJ-dw-ElL"/>
+                        <constraint firstAttribute="height" constant="45" id="hUY-qR-3eG"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system"/>
+                    <connections>
+                        <action selector="onClickPlusBtn:" destination="-1" eventType="touchUpInside" id="WnT-x6-KsG"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -74,6 +86,7 @@
                 <constraint firstItem="SdV-WM-szp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="01M-7k-jus"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SdV-WM-szp" secondAttribute="trailing" constant="20" id="0cr-xx-UHi"/>
                 <constraint firstItem="wiL-TY-eMV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="1sG-jH-cDj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OMc-Px-hmg" secondAttribute="trailing" constant="60" id="5l0-DI-MUF"/>
                 <constraint firstItem="AjC-YX-WnV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="6Q6-8O-v2o"/>
                 <constraint firstItem="lFt-oB-n0E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7b3-La-UhM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9jm-E2-U3x" secondAttribute="trailing" constant="20" id="8f8-JL-VrZ"/>
@@ -92,12 +105,14 @@
                 <constraint firstItem="lFt-oB-n0E" firstAttribute="top" secondItem="r5o-ia-D4E" secondAttribute="bottom" constant="20" id="o7i-ot-MSc"/>
                 <constraint firstItem="YMw-ft-P0f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="oXB-9L-vsB"/>
                 <constraint firstItem="AjC-YX-WnV" firstAttribute="leading" secondItem="wiL-TY-eMV" secondAttribute="trailing" constant="10" id="tIi-yH-NAL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OMc-Px-hmg" secondAttribute="bottom" constant="30" id="zDx-yB-WtM"/>
             </constraints>
             <point key="canvasLocation" x="113.74045801526717" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
         <image name="Profile_pic" width="16" height="16"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
