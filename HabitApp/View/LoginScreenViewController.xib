@@ -60,19 +60,34 @@
                         <action selector="onClickBtn:" destination="-1" eventType="touchUpInside" id="oKj-gZ-wtn"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2h-Qa-Zuz">
+                    <rect key="frame" x="55" y="615" width="283" height="48"/>
+                    <color key="backgroundColor" red="0.093332953751087189" green="0.49513375759124756" blue="0.51325392723083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="cOe-LK-M8P"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Sign Up">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="29"/>
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.94361931085586548" green="0.97352200746536255" blue="0.92118304967880249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0ll-Fa-P1R" secondAttribute="trailing" constant="35" id="1lb-s5-JRC"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xsr-OR-JSG" secondAttribute="bottom" constant="40" id="Cby-kz-xSq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="y2h-Qa-Zuz" secondAttribute="bottom" constant="20" id="5lW-sJ-3fY"/>
                 <constraint firstItem="xuI-Se-p9c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="Hx6-bg-f7K"/>
                 <constraint firstItem="0ll-Fa-P1R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="IEc-Ma-4D0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xsr-OR-JSG" secondAttribute="trailing" constant="55" id="Ie3-Xr-P3k"/>
                 <constraint firstItem="xsr-OR-JSG" firstAttribute="top" secondItem="p4t-gF-fvj" secondAttribute="bottom" constant="50" id="KNm-Da-EgU"/>
+                <constraint firstItem="y2h-Qa-Zuz" firstAttribute="top" secondItem="xsr-OR-JSG" secondAttribute="bottom" constant="20" id="L87-TR-eXb"/>
                 <constraint firstItem="p4t-gF-fvj" firstAttribute="top" secondItem="0ll-Fa-P1R" secondAttribute="bottom" constant="30" id="Lni-Cb-AVk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xuI-Se-p9c" secondAttribute="trailing" constant="35" id="NYu-eI-2Uq"/>
                 <constraint firstItem="xuI-Se-p9c" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="120" id="XXF-OK-UMm"/>
+                <constraint firstItem="y2h-Qa-Zuz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="55" id="aas-Oc-O3N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="y2h-Qa-Zuz" secondAttribute="trailing" constant="55" id="jUW-Ad-n7w"/>
                 <constraint firstItem="p4t-gF-fvj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="kpM-tp-1uP"/>
                 <constraint firstItem="xsr-OR-JSG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="55" id="qSH-tt-V22"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p4t-gF-fvj" secondAttribute="trailing" constant="35" id="xcI-xv-7h7"/>
@@ -83,7 +98,7 @@
     </objects>
     <resources>
         <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

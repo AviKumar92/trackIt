@@ -10,7 +10,10 @@ import UniformTypeIdentifiers
 class AddHabitViewController: UIViewController {
    
     
-
+    @IBOutlet weak var montlyView: UIView!
+    @IBOutlet weak var weeklyView: UIView!
+    
+    @IBOutlet weak var frequecyContainerStack: UIStackView!
     
     @IBOutlet weak var btnTime: UIButton!
     @IBOutlet weak var btnDaily: UIButton!
@@ -35,6 +38,7 @@ class AddHabitViewController: UIViewController {
         Utility.setCornerRadius(view: btnAdd, cornerRadius: 10)
         Utility.setCornerRadius(view: txtvNote, cornerRadius: 10)
         Utility.setCornerRadius(view: txtName, cornerRadius: 10)
+        frequecyContainerStack.isHidden = true
         if(isUpdated){
             bindSelectedHabit()
             btnAdd.setTitle("Update", for: .normal)
@@ -167,10 +171,23 @@ class AddHabitViewController: UIViewController {
         dataPassDelegate?.refreshPage()
     }
     
- 
-    @IBAction func onClickDaily(_ sender: Any) {
-        openFrequencyPicker()
+    @IBAction func onClickDailyBtn(_ sender: Any) {
+        frequecyContainerStack.isHidden = true
     }
+    
+    
+    @IBAction func onClickMonthlyBtn(_ sender: Any) {
+        frequecyContainerStack.isHidden = false
+        weeklyView.isHidden = true
+        montlyView.isHidden = false
+    }
+    @IBAction func onClickWeeklyBtn(_ sender: Any) {
+        frequecyContainerStack.isHidden = false
+        montlyView.isHidden = true
+        weeklyView.isHidden = false
+    }
+    
+   
     
     @IBAction func onClickTime(_ sender: Any) {
         openDatePicker()
