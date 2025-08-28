@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashBoardViewController" customModule="HabitApp" customModuleProvider="target">
             <connections>
-                <outlet property="lblDate" destination="lFt-oB-n0E" id="nOv-Gc-3Ln"/>
+                <outlet property="calendarView" destination="lFt-oB-n0E" id="xvS-68-cr6"/>
                 <outlet property="lblDay" destination="r5o-ia-D4E" id="81i-0G-1kB"/>
                 <outlet property="lblName" destination="wiL-TY-eMV" id="P3j-MU-ivN"/>
                 <outlet property="lblNotification" destination="SdV-WM-szp" id="CXB-HA-TlV"/>
@@ -37,28 +37,38 @@
                         <constraint firstAttribute="height" constant="50" id="j3K-L2-PeQ"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-oB-n0E">
-                    <rect key="frame" x="20" y="207.66666666666663" width="353" height="110"/>
-                    <color key="backgroundColor" red="1" green="0.62251879345381611" blue="0.57324805093446973" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-oB-n0E" customClass="FSCalendar">
+                    <rect key="frame" x="20" y="207.66666666666663" width="353" height="120"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="110" id="BKY-8R-0YF"/>
+                        <constraint firstAttribute="height" constant="120" id="BKY-8R-0YF"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                            <color key="value" red="0.099865175783634186" green="0.49357092380523682" blue="0.51524680852890015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                            <color key="value" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="titleWeekendColor">
+                            <color key="value" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-WM-szp">
-                    <rect key="frame" x="20" y="347.66666666666669" width="353" height="150"/>
+                    <rect key="frame" x="20" y="357.66666666666669" width="353" height="150"/>
                     <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="0.3435430463576159" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="Y5K-3A-1ry"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Routine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jm-E2-U3x">
-                    <rect key="frame" x="20" y="517.66666666666663" width="353" height="21"/>
+                    <rect key="frame" x="20" y="527.66666666666663" width="353" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YMw-ft-P0f">
-                    <rect key="frame" x="10" y="558.66666666666663" width="373" height="215.33333333333337"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YMw-ft-P0f">
+                    <rect key="frame" x="10" y="568.66666666666663" width="373" height="205.33333333333337"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning,Avinash" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiL-TY-eMV">
@@ -74,7 +84,9 @@
                         <constraint firstAttribute="height" constant="45" id="hUY-qR-3eG"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system"/>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <backgroundConfiguration key="background" image="floatingAdd"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="onClickPlusBtn:" destination="-1" eventType="touchUpInside" id="WnT-x6-KsG"/>
                     </connections>
@@ -112,7 +124,7 @@
     </objects>
     <resources>
         <image name="Profile_pic" width="16" height="16"/>
-        <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="floatingAdd" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

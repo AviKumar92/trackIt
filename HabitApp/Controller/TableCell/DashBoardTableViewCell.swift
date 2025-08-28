@@ -25,6 +25,11 @@ class DashBoardTableViewCell: UITableViewCell {
 
        
     }
+    func bindData(data: Habitdata) {
+        lblTime.text = data.time
+        lblOne.text = data.name
+        lblTwo.text = data.frequency
+    }
     
     @IBAction func onClickCheckMark(_ sender: Any) {
     }

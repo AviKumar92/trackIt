@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D578A5E8BF96682142C6B8E /* Pods_HabitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B95A66A66DA4242BBAA8B97 /* Pods_HabitApp.framework */; };
+		AC2ACD332E5CCD9B00FD08D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2ACD322E5CCD9B00FD08D9 /* CoreData.framework */; };
 		ACE0E0E62E5B7C62008F393D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = ACE0E0E52E5B7C62008F393D /* FSCalendar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B95A66A66DA4242BBAA8B97 /* Pods_HabitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2ACD322E5CCD9B00FD08D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AC5FDB342E4D9C04008CEF9E /* HabitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD4284C2E564D310052CE01 /* noida_test_route.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = noida_test_route.gpx; path = ../../../noida_test_route.gpx; sourceTree = "<group>"; };
+		B54E05787DDFE2D889B20D3E /* Pods-HabitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitApp.debug.xcconfig"; path = "Target Support Files/Pods-HabitApp/Pods-HabitApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F62C5F32FBBD45B08FF16E80 /* Pods-HabitApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitApp.release.xcconfig"; path = "Target Support Files/Pods-HabitApp/Pods-HabitApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -41,19 +47,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC2ACD332E5CCD9B00FD08D9 /* CoreData.framework in Frameworks */,
 				ACE0E0E62E5B7C62008F393D /* FSCalendar in Frameworks */,
+				2D578A5E8BF96682142C6B8E /* Pods_HabitApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E9415CD44A7D91D5EA0C75F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B54E05787DDFE2D889B20D3E /* Pods-HabitApp.debug.xcconfig */,
+				F62C5F32FBBD45B08FF16E80 /* Pods-HabitApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC2ACD312E5CCD9B00FD08D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC2ACD322E5CCD9B00FD08D9 /* CoreData.framework */,
+				5B95A66A66DA4242BBAA8B97 /* Pods_HabitApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AC5FDB2B2E4D9C04008CEF9E = {
 			isa = PBXGroup;
 			children = (
 				ACD4284C2E564D310052CE01 /* noida_test_route.gpx */,
 				AC5FDB362E4D9C04008CEF9E /* HabitApp */,
+				AC2ACD312E5CCD9B00FD08D9 /* Frameworks */,
 				AC5FDB352E4D9C04008CEF9E /* Products */,
+				9E9415CD44A7D91D5EA0C75F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,9 +100,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC5FDB4A2E4D9C06008CEF9E /* Build configuration list for PBXNativeTarget "HabitApp" */;
 			buildPhases = (
+				5183AB8EC71D45AE2848B6D9 /* [CP] Check Pods Manifest.lock */,
 				AC5FDB302E4D9C04008CEF9E /* Sources */,
 				AC5FDB312E4D9C04008CEF9E /* Frameworks */,
 				AC5FDB322E4D9C04008CEF9E /* Resources */,
+				32D427C15429E59245B8AF2D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,6 +168,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		32D427C15429E59245B8AF2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabitApp/Pods-HabitApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabitApp/Pods-HabitApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HabitApp/Pods-HabitApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5183AB8EC71D45AE2848B6D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HabitApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC5FDB302E4D9C04008CEF9E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -151,6 +227,7 @@
 /* Begin XCBuildConfiguration section */
 		AC5FDB4B2E4D9C06008CEF9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B54E05787DDFE2D889B20D3E /* Pods-HabitApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -189,6 +266,7 @@
 		};
 		AC5FDB4C2E4D9C06008CEF9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F62C5F32FBBD45B08FF16E80 /* Pods-HabitApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

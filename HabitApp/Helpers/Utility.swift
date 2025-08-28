@@ -17,5 +17,8 @@ class Utility {
         }
     }
     
-    
+    static  func setCornerRadius(view:UIView,cornerRadius:CGFloat){
+        view.layer.cornerRadius = cornerRadius
+        view.layer.masksToBounds = true
+    }
 }
