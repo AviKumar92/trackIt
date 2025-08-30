@@ -19,7 +19,7 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var lblName: UILabel!
     
     @IBOutlet weak var calendarView: FSCalendar!
-    var habitList: [Habitdata] = []
+    var habitList: [Habits] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,8 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func onClickPlusBtn(_ sender: Any) {
         var vc = AddHabitViewController()
         vc.dataPassDelegate = self
-        present(vc, animated: true)
+//        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     

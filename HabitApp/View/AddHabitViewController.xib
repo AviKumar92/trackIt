@@ -12,12 +12,16 @@
             <connections>
                 <outlet property="btnAdd" destination="bfN-xG-bbw" id="y6D-tT-jSJ"/>
                 <outlet property="btnDaily" destination="9FQ-uS-wQ8" id="UA6-oT-fh0"/>
+                <outlet property="btnMonthly" destination="6kp-oZ-3Zm" id="bPu-G2-xfc"/>
                 <outlet property="btnTime" destination="eRb-rC-T5Y" id="Y11-QV-oca"/>
+                <outlet property="btnWeekly" destination="fuO-gJ-f0A" id="jpU-HK-jbD"/>
                 <outlet property="frequecyContainerStack" destination="REF-WU-xdU" id="qHd-kF-1O0"/>
                 <outlet property="montlyView" destination="Mcz-sQ-7Eg" id="6vA-4q-2FX"/>
+                <outlet property="reminderSwitch" destination="syH-U4-vMt" id="eJp-NL-MXW"/>
                 <outlet property="txtName" destination="XjW-5G-Quc" id="IPb-05-h2H"/>
                 <outlet property="txtvNote" destination="005-Hh-HJ9" id="L5Q-t7-H6L"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="WtZ-w1-YU3"/>
+                <outlet property="weeklyCollectionView" destination="23p-fR-8nS" id="OA7-5q-TPL"/>
                 <outlet property="weeklyView" destination="fPZ-Da-m6u" id="hSZ-B6-zmq"/>
             </connections>
         </placeholder>
@@ -52,10 +56,10 @@
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XjW-5G-Quc">
                                     <rect key="frame" x="35" y="129" width="323" height="48"/>
-                                    <color key="backgroundColor" systemColor="systemGray2Color"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="YcW-Jj-UGR"/>
                                     </constraints>
+                                    <color key="textColor" red="0.094117647058823528" green="0.70196078431372544" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -88,22 +92,22 @@
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="005-Hh-HJ9">
                                     <rect key="frame" x="35" y="693" width="323" height="50"/>
-                                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="Y8v-jM-KOt"/>
                                     </constraints>
-                                    <color key="textColor" systemColor="labelColor"/>
+                                    <color key="textColor" red="0.094117647058823528" green="0.70196078431372544" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xVZ-At-HEE">
                                     <rect key="frame" x="35" y="241" width="323" height="296"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="DqP-CZ-ggg">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DqP-CZ-ggg">
                                             <rect key="frame" x="0.0" y="0.0" width="323" height="35"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FQ-uS-wQ8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="91.666666666666671" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="35"/>
                                                     <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Daily">
@@ -115,7 +119,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuO-gJ-f0A">
-                                                    <rect key="frame" x="115.66666666666666" y="0.0" width="91.666666666666657" height="35"/>
+                                                    <rect key="frame" x="112.66666666666666" y="0.0" width="97.666666666666657" height="35"/>
                                                     <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Weekly">
@@ -127,7 +131,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kp-oZ-3Zm">
-                                                    <rect key="frame" x="231.33333333333329" y="0.0" width="91.666666666666657" height="35"/>
+                                                    <rect key="frame" x="225.33333333333329" y="0.0" width="97.666666666666657" height="35"/>
                                                     <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Monthly">
@@ -151,7 +155,7 @@
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="cell" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="23p-fR-8nS">
                                                             <rect key="frame" x="0.0" y="0.0" width="323" height="60"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0tt-g0-VRe">
                                                                 <size key="itemSize" width="128" height="128"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -160,7 +164,7 @@
                                                             </collectionViewFlowLayout>
                                                         </collectionView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="23p-fR-8nS" firstAttribute="top" secondItem="fPZ-Da-m6u" secondAttribute="top" id="5du-ry-P44"/>
                                                         <constraint firstAttribute="bottom" secondItem="23p-fR-8nS" secondAttribute="bottom" id="9n6-wr-RdN"/>
@@ -180,17 +184,21 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </stackView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRb-rC-T5Y">
                                     <rect key="frame" x="35" y="601" width="323" height="48"/>
-                                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="rlU-Ne-9yf"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Time"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Time">
+                                        <color key="baseForegroundColor" red="0.094117647058823528" green="0.70196078431372544" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </buttonConfiguration>
                                     <connections>
                                         <action selector="onClickTime:" destination="-1" eventType="touchUpInside" id="Eho-Jx-7jX"/>
                                     </connections>
@@ -206,10 +214,13 @@
                                 </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="syH-U4-vMt">
                                     <rect key="frame" x="309" y="757.66666666666663" width="51" height="31"/>
+                                    <connections>
+                                        <action selector="onClickSwitch:" destination="-1" eventType="valueChanged" id="jKb-7O-bUP"/>
+                                    </connections>
                                 </switch>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-xG-bbw">
                                     <rect key="frame" x="35" y="813.33333333333337" width="323" height="48"/>
-                                    <color key="backgroundColor" systemColor="linkColor"/>
+                                    <color key="backgroundColor" red="0.096057489802040846" green="0.70060744497414973" blue="0.43096241249319728" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="bc4-Ij-Aug"/>
                                     </constraints>
@@ -223,7 +234,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBrownColor"/>
+                            <color key="backgroundColor" red="0.6026529361744698" green="0.80350827831132454" blue="0.5491071428571429" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstItem="GA7-12-0H4" firstAttribute="leading" secondItem="7Nz-ph-j0N" secondAttribute="leading" constant="35" id="11g-Zg-cZr"/>
                                 <constraint firstAttribute="bottom" secondItem="bfN-xG-bbw" secondAttribute="bottom" constant="30" id="1WN-VU-EMP"/>
@@ -264,7 +275,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.093332953751087189" green="0.49513375759124756" blue="0.51325392723083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="7Nz-ph-j0N" firstAttribute="leading" secondItem="pB6-6E-3CD" secondAttribute="leading" id="02m-7h-GJ3"/>
                         <constraint firstAttribute="trailing" secondItem="7Nz-ph-j0N" secondAttribute="trailing" id="J52-zH-qTb"/>
@@ -276,7 +287,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemGreenColor"/>
+            <color key="backgroundColor" red="0.69411766529999996" green="0.92941176889999999" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="pB6-6E-3CD" secondAttribute="top" id="4lB-Oa-6e6"/>
                 <constraint firstItem="pB6-6E-3CD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wy5-Dw-2l5"/>
@@ -288,23 +299,11 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

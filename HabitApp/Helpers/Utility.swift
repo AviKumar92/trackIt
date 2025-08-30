@@ -21,4 +21,13 @@ class Utility {
         view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = true
     }
+    
+    /// Random pastel color (soft, high brightness, low saturation)
+   static func randomPastelColor() -> UIColor {
+        let hue: CGFloat        = .random(in: 0...1)          // any hue
+        let saturation: CGFloat = .random(in: 0.20...0.40)    // low-ish
+        let brightness: CGFloat = .random(in: 0.92...1.00)    // bright
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+    }
+
 }

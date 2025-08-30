@@ -18,14 +18,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let window = UIWindow(windowScene: windowScene)
-        let firstVC = LoginScreenViewController() // or load from storyboard if needed
-        
-        window.rootViewController = firstVC
-        self.window = window
-        window.makeKeyAndVisible()
+        splashScreen()
     }
-
+    
+    private func splashScreen(){
+        let launchScreenVC = UIStoryboard.init(name: "LaunchScreen", bundle: nil)
+        let rootVC = launchScreenVC.instantiateViewController(withIdentifier: "splashController")
+        self.window?.rootViewController = rootVC
+        self.window?.makeKeyAndVisible()
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(dismissSplashController), userInfo: nil, repeats: false)
+    }
+    @objc func dismissSplashController(){
+        let viewController =   LoginScreenViewController()
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -25,8 +25,8 @@ class DashBoardTableViewCell: UITableViewCell {
 
        
     }
-    func bindData(data: Habitdata) {
-        lblTime.text = data.time
+    func bindData(data: Habits) {
+      //  lblTime.text = data.time
         lblOne.text = data.name
         lblTwo.text = data.frequency
     }
