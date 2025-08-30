@@ -209,6 +209,8 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
             }
             
             DataBaseHelper.sharedInstance.save(habit)
+            
+            if habit.isReminderOn { NotificationManager.shared.scheduleNotifications(for: habit) }
             navigationController?.popViewController(animated: true)
             dataPassDelegate?.refreshPage()
         }
@@ -240,6 +242,15 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         
         
         @IBAction func onClickSwitch(_ sender: Any) {
+            if reminderSwitch.isOn {
+                   // Check if user denied before
+                   NotificationManager.shared.checkPermissionAndRedirect(from: self)
+               } else {
+                   // Cancel scheduled notification if turned off
+                   if let habit = selectedHabitData {
+                       NotificationManager.shared.removeNotifications(for: habit)
+                   }
+               }
         }
         
         @IBAction func onClickTime(_ sender: Any) {
