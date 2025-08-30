@@ -15,8 +15,12 @@ enum FrequencyType: String {
 
 extension Habits {
     var frequencyData: FrequencyType {
-        get { FrequencyType(rawValue: frequency ?? "") ?? .daily }
-        set { frequency = frequencyData.rawValue }
+        get {
+            FrequencyType(rawValue: frequency ?? "") ?? .daily
+        }
+        set {
+            frequency = newValue.rawValue
+        }
     }
 
     var scheduleDescription: String {
@@ -26,8 +30,10 @@ extension Habits {
             let days = (weeklyDays ?? []).map { weekdayName(from: $0) }
             return "Weekly on \(days.joined(separator: ", ")) at \(timeString())"
         case .monthly:
-            let days = (monthlyDates ?? []).sorted().map { String($0) }
-            return "Monthly on \(days.joined(separator: ", ")) at \(timeString())"
+            let df = DateFormatter()
+            df.dateFormat = "MMM d"
+            let dates = (monthlyDates ?? []).sorted().map { df.string(from: $0) }
+            return "Monthly on \(dates.joined(separator: ", ")) at \(timeString())"
         }
     }
 
@@ -43,3 +49,4 @@ extension Habits {
         return symbols[index % symbols.count]
     }
 }
+

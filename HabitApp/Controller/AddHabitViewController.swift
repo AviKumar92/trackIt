@@ -9,7 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import CoreData
 
-class AddHabitViewController: UIViewController {
+class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDataSource{
     
     
     @IBOutlet weak var reminderSwitch: UISwitch!
@@ -36,7 +36,8 @@ class AddHabitViewController: UIViewController {
     var selectedTimeForHabit: Date?
     var dataPassDelegate:DataPass?
     private var selectedWeekdays: Set<Int> = []
-    private var selectedMonthDates: Set<Int> = []
+    private var selectedMonthDates: Set<Date> = []
+    var SelecteFrequencyOption = FrequencyType.daily
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,10 +80,12 @@ class AddHabitViewController: UIViewController {
     }
     
     func bindSelectedHabit(){
-//        txtName.text  = selectedHabitData?.name
-//        btnTime.titleLabel?.text = selectedHabitData?.time
-//        btnDaily.titleLabel?.text = selectedHabitData?.frequency
-       // txtvNote.text = selectedHabitData?.note
+        txtName.text  = selectedHabitData?.name
+        btnTime.titleLabel?.text = selectedHabitData?.timeString()
+        txtvNote.text = selectedHabitData?.notes
+        reminderSwitch.isOn = selectedHabitData?.isReminderOn ?? false
+        SelecteFrequencyOption = selectedHabitData?.frequencyData ?? .daily
+        
     }
     func addDoneButtonOnKeyboard()
     {
@@ -163,30 +166,32 @@ class AddHabitViewController: UIViewController {
                         
             let time = selectedTimeForHabit
             let note = txtvNote.text ?? ""
-            
-            let frequency = FrequencyType.weekly
             let reminderOn = reminderSwitch.isOn
-           
-            
-//            let savedData = ["name": name,
-//                             "time" : time,
-//                             "frequency": frequency,
-//                             "note": note]
-            
-            let ctx = DataBaseHelper.sharedInstance.context
             let habit: Habits
             
-            habit = Habits(context: ctx!)
+            if(isUpdated){
+                habit = selectedHabitData!
+
+            }else{
+                
+                let ctx = DataBaseHelper.sharedInstance.context
+                habit = Habits(context: ctx!)
+                habit.id = UUID()
+                habit.createdAt = Date.now
+
+            }
             
-            habit.id = UUID()
-            habit.createdAt = Date.now
+            
+            
+            
+            
             habit.name = name
             habit.notes = note
             habit.time = time
-            habit.frequencyData = frequency
+            habit.frequencyData =  SelecteFrequencyOption
             habit.isReminderOn = reminderOn
             
-            if frequency == .weekly
+            if SelecteFrequencyOption == .weekly
             {
                 habit.weeklyDays = Array(selectedWeekdays)
             }
@@ -194,8 +199,7 @@ class AddHabitViewController: UIViewController {
                 habit.weeklyDays = nil
             }
 
-
-            if frequency == .monthly
+            if SelecteFrequencyOption == .monthly
             {
                 habit.monthlyDates = Array(selectedMonthDates)
             }
@@ -204,14 +208,8 @@ class AddHabitViewController: UIViewController {
                 habit.monthlyDates = nil
             }
             
-            if(isUpdated){
-//                DataBaseHelper.sharedInstance.editData(object: savedData as! [String:String], index: selectedIndex)
-//                navigationController?.popViewController(animated: true)
-            }else{
-                DataBaseHelper.sharedInstance.save(habit)
-                navigationController?.popViewController(animated: true)
-            }
-            
+            DataBaseHelper.sharedInstance.save(habit)
+            navigationController?.popViewController(animated: true)
             dataPassDelegate?.refreshPage()
         }
         
@@ -219,6 +217,7 @@ class AddHabitViewController: UIViewController {
             resetButtonColors()
             btnDaily.backgroundColor = .green
             frequecyContainerStack.isHidden = true
+            SelecteFrequencyOption = .daily
         }
         
         
@@ -228,6 +227,7 @@ class AddHabitViewController: UIViewController {
             frequecyContainerStack.isHidden = false
             weeklyView.isHidden = true
             montlyView.isHidden = false
+            SelecteFrequencyOption = .monthly
         }
         @IBAction func onClickWeeklyBtn(_ sender: Any) {
             resetButtonColors()
@@ -235,6 +235,7 @@ class AddHabitViewController: UIViewController {
             frequecyContainerStack.isHidden = false
             montlyView.isHidden = true
             weeklyView.isHidden = false
+            SelecteFrequencyOption = .weekly
         }
         
         
@@ -244,7 +245,16 @@ class AddHabitViewController: UIViewController {
         @IBAction func onClickTime(_ sender: Any) {
             openDatePicker()
         }
-        
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedMonthDates.insert(date)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if  selectedMonthDates.count > 0 {
+            selectedMonthDates.remove(date)
+
+        }
+    }
     }
     
     extension AddHabitViewController: UIPickerViewDataSource,UIPickerViewDelegate {
@@ -315,3 +325,4 @@ class AddHabitViewController: UIViewController {
             }
         }
     }
+

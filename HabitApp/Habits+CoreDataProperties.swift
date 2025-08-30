@@ -20,7 +20,7 @@ extension Habits {
     @NSManaged public var frequency: String?
     @NSManaged public var id: UUID?
     @NSManaged public var isReminderOn: Bool
-    @NSManaged public var monthlyDates: [Int]?
+    @NSManaged public var monthlyDates: [Date]?
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
     @NSManaged public var time: Date?
