@@ -16,7 +16,7 @@
                 <outlet property="btnTime" destination="eRb-rC-T5Y" id="Y11-QV-oca"/>
                 <outlet property="btnWeekly" destination="fuO-gJ-f0A" id="jpU-HK-jbD"/>
                 <outlet property="frequecyContainerStack" destination="REF-WU-xdU" id="qHd-kF-1O0"/>
-                <outlet property="montlyView" destination="Mcz-sQ-7Eg" id="6vA-4q-2FX"/>
+                <outlet property="montlyView" destination="Mcz-sQ-7Eg" id="sgR-ls-omI"/>
                 <outlet property="reminderSwitch" destination="syH-U4-vMt" id="eJp-NL-MXW"/>
                 <outlet property="txtName" destination="XjW-5G-Quc" id="IPb-05-h2H"/>
                 <outlet property="txtvNote" destination="005-Hh-HJ9" id="L5Q-t7-H6L"/>

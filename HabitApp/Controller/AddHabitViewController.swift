@@ -16,9 +16,9 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
     @IBOutlet weak var btnMonthly: UIButton!
     @IBOutlet weak var btnWeekly: UIButton!
     @IBOutlet weak var weeklyCollectionView: UICollectionView!
-    @IBOutlet weak var montlyView: UIView!
     @IBOutlet weak var weeklyView: UIView!
     
+    @IBOutlet weak var montlyView: FSCalendar!
     @IBOutlet weak var frequecyContainerStack: UIStackView!
     
     @IBOutlet weak var btnTime: UIButton!
@@ -64,6 +64,8 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         
         resetButtonColors()
         btnDaily.backgroundColor = .green
+        montlyView.delegate = self
+        montlyView.dataSource = self
     }
     
     func registerCell(){

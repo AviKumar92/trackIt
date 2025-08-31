@@ -35,18 +35,29 @@ class DataBaseHelper {
            return habit
        }
        
-       func deleteData(index: Int) -> [Habits]{
-           var habitList = getHabitData()
-           context?.delete(habitList[index])
-           habitList.remove(at: index)
-           do {
-               try context?.save()
-           } catch  {
-               print("cannot be deleted")
-           }
-           return habitList
-       }
+//       func deleteData(index: Int) -> [Habits]{
+//           var habitList = getHabitData()
+//           context?.delete(habitList[index])
+//           habitList.remove(at: index)
+//           do {
+//               try context?.save()
+//           } catch  {
+//               print("cannot be deleted")
+//           }
+//           return habitList
+//       }
        
+    func deleteHabit(habit:Habits){
+        if let context = context {
+            context.delete(habit)
+            do {
+                try context.save()
+            }
+            catch {
+                print("Error deleting habit: \(error)")
+            }
+        }
+    }
        
        func editData( habit: Habits , index:Int){
 //           var habitList = getHabitData()

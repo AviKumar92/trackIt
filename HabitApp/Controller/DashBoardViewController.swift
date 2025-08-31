@@ -17,39 +17,23 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var lblDay: UILabel!
     @IBOutlet weak var lblName: UILabel!
-    
     @IBOutlet weak var calendarView: FSCalendar!
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    
     var habitList: [Habits] = []
+    var filteredHabits: [Habits] = []
+    var selectedDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendarView.layer.cornerRadius = 10
-        calendarView.layer.borderWidth = 1
-        calendarView.layer.borderColor = UIColor.purple.cgColor
-        calendarView.layer.masksToBounds = true
-        calendarView.scope = .week
-        
-        calendarView.appearance.headerDateFormat = "MMMM yyyy"
-        calendarView.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 16)
-        calendarView.appearance.headerMinimumDissolvedAlpha = 0.0   // hide faded months
-
-        calendarView.appearance.weekdayFont = UIFont.systemFont(ofSize: 14, weight: .medium)
-        calendarView.weekdayHeight = 30
-
-        calendarView.appearance.titleFont = UIFont.systemFont(ofSize: 14, weight: .regular)
-        calendarView.appearance.todayColor = .systemRed
-        calendarView.appearance.selectionColor = .systemBlue
-        calendarView.appearance.borderRadius = 1.0             // ensures circle uses full cell
-
-
-        
-        
+        setUpCalendarUI()
         lblNotification.layer.cornerRadius = 10
         userImage.layer.cornerRadius = 20
         let nibcell = UINib(nibName: "DashBoardTableViewCell", bundle: nil)
         userTableView.register(nibcell, forCellReuseIdentifier: "DashBoardTableViewCell")
         userTableView.dataSource = self
         userTableView.delegate = self
+       
        // addCalender()
         
        
@@ -58,23 +42,87 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         fetchHabbits()
     }
     
+    func setUpCalendarUI(){
+        calendarView.layer.cornerRadius = 10
+        calendarView.layer.borderWidth = 1
+        calendarView.layer.borderColor = UIColor.purple.cgColor
+        calendarView.layer.masksToBounds = true
+        calendarView.backgroundColor = UIColor.gray
+        calendarView.scope = .week
+        
+       // calendarView.weekdayHeight = 40
+        calendarView.rowHeight = 120
+
+        calendarView.appearance.headerDateFormat = "MMMM yyyy"
+        calendarView.appearance.headerTitleColor = .black
+        calendarView.appearance.headerTitleFont = UIFont.systemFont(ofSize: 16, weight: .medium)
+
+        calendarView.appearance.weekdayTextColor = .blue
+        calendarView.appearance.weekdayFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+
+        calendarView.appearance.todayColor = .systemBlue
+        calendarView.appearance.selectionColor = .systemRed
+        calendarView.appearance.titleDefaultColor = .black
+        calendarView.appearance.titleFont = UIFont.systemFont(ofSize: 14)
+        calendarView.delegate = self
+        calendarView.dataSource = self
+
+    }
+    
     func fetchHabbits(){
-        //DataBaseHelper.sharedInstance.getHabitData()
+        selectedDate = Date() // Default date = today
         habitList = DataBaseHelper.sharedInstance.getHabitData()
-        userTableView.reloadData()
+        filterHabits(for: selectedDate)
+       // userTableView.reloadData()
         
     }
     func refreshPage() {
         fetchHabbits()
     }
     
-    
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-     
-        calendarView.frame.size.height = bounds.height
-           self.view.layoutIfNeeded()
+    func filterHabits(for date: Date) {
+        print("\(date)")
+        filteredHabits = habitList.filter { habit in
+          //  guard let frequency = habit.frequencyData else { return false }
+            
+            switch habit.frequencyData {
+            case .daily:
+                return true
+            case .weekly:
+                let match = habit.weeklyDays?.contains(weekday(from: date)) ?? false
+                print("📅 Weekly \(habit.name ?? "") -> \(match)")
+                return match
+            case .monthly:
+                if let dates = habit.monthlyDates {
+                            let selectedDay = Calendar.current.component(.day, from: date)
+                            let match = dates.contains { storedDate in
+                                Calendar.current.component(.day, from: storedDate) == selectedDay
+                            }
+                            print("📆 Monthly \(habit.name ?? "") -> \(match)")
+                            return match
+                        }
+                           return false
+            default:
+                return false
+            }
+        }
+        userTableView.reloadData()
     }
 
+    func weekday(from date: Date) -> Int {
+        // Sunday = 1, Monday = 2, ... Saturday = 7
+        
+        var systemWeekDay = Calendar.current.component(.weekday, from: date)
+        let adjusted = (systemWeekDay + 5) % 7 + 1
+        return adjusted
+    }
+
+    func day(from date: Date) -> Int {
+        // 1...31 (day of the month)
+        return Calendar.current.component(.day, from: date)
+    }
+
+    
     
     @IBAction func onClickPlusBtn(_ sender: Any) {
         var vc = AddHabitViewController()
@@ -86,12 +134,12 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return habitList.count
+        return filteredHabits.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashBoardTableViewCell", for: indexPath) as! DashBoardTableViewCell
-        cell.bindData(data: habitList[indexPath.row])
+        cell.bindData(data: filteredHabits[indexPath.row])
         
         return cell
     }
@@ -102,7 +150,7 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = AddHabitViewController()
-        vc.selectedHabitData = habitList[indexPath.row]
+        vc.selectedHabitData = filteredHabits[indexPath.row]
         vc.isUpdated = true
         navigationController?.pushViewController(vc, animated: true)
         
@@ -113,11 +161,19 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         
         if editingStyle == .delete {
             // Remove from data source
-            var updatedList = DataBaseHelper.sharedInstance.deleteData(index: indexPath.row)
-            habitList.remove(at: indexPath.row)
+            let habitToDelete = filteredHabits[indexPath.row]
+                
+                // Delete from Core Data
+                DataBaseHelper.sharedInstance.deleteHabit(habit: habitToDelete)
+                
+                // Remove from both arrays
+                if let indexInAll = habitList.firstIndex(where: { $0.id == habitToDelete.id }) {
+                    habitList.remove(at: indexInAll)
+                }
+                filteredHabits.remove(at: indexPath.row)
             
             // Remove row from tableView with animation
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            userTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 
@@ -126,9 +182,17 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
 //    }
 
 }
-extension DashBoardViewController: FSCalendarDelegate{
+extension DashBoardViewController: FSCalendarDataSource, FSCalendarDelegate{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
     
-        
+        selectedDate = date
+        filterHabits(for: date)
     }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarHeightConstraint.constant = bounds.height
+        print("height \(bounds.height)")
+        self.view.layoutIfNeeded()
+    }
+    
 }
