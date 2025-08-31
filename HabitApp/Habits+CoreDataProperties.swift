@@ -2,7 +2,7 @@
 //  Habits+CoreDataProperties.swift
 //  HabitApp
 //
-//  Created by Avinash kumar on 30/08/25.
+//  Created by Avinash kumar on 31/08/25.
 //
 //
 
@@ -25,6 +25,24 @@ extension Habits {
     @NSManaged public var notes: String?
     @NSManaged public var time: Date?
     @NSManaged public var weeklyDays: [Int]?
+    @NSManaged public var completions: NSSet?
+
+}
+
+// MARK: Generated accessors for completions
+extension Habits {
+
+    @objc(addCompletionsObject:)
+    @NSManaged public func addToCompletions(_ value: HabitLog)
+
+    @objc(removeCompletionsObject:)
+    @NSManaged public func removeFromCompletions(_ value: HabitLog)
+
+    @objc(addCompletions:)
+    @NSManaged public func addToCompletions(_ values: NSSet)
+
+    @objc(removeCompletions:)
+    @NSManaged public func removeFromCompletions(_ values: NSSet)
 
 }
 

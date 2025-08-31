@@ -15,7 +15,6 @@ class DataBaseHelper {
        let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
        
        func save(_ habit: Habits) {
-//           let habitdataObj = NSEntityDescription.insertNewObject(forEntityName: "Habits", into: context!) as! Habits
            do {
                try context?.save()
            } catch  {
@@ -34,19 +33,7 @@ class DataBaseHelper {
            }
            return habit
        }
-       
-//       func deleteData(index: Int) -> [Habits]{
-//           var habitList = getHabitData()
-//           context?.delete(habitList[index])
-//           habitList.remove(at: index)
-//           do {
-//               try context?.save()
-//           } catch  {
-//               print("cannot be deleted")
-//           }
-//           return habitList
-//       }
-       
+
     func deleteHabit(habit:Habits){
         if let context = context {
             context.delete(habit)
@@ -60,12 +47,6 @@ class DataBaseHelper {
     }
        
        func editData( habit: Habits , index:Int){
-//           var habitList = getHabitData()
-//           habitList[index].name = object["name"]
-//           habitList[index].frequency = object["frequency"]
-//           habitList[index].note = object["note"]
-//           habitList[index].time = object["time"]
-           
            do {
                try context?.save()
            } catch  {
@@ -73,5 +54,25 @@ class DataBaseHelper {
            }
        }
    
+    func fetchHabitLog(habit: Habits, on date: Date) -> HabitLog? {
+        let req: NSFetchRequest<HabitLog> = HabitLog.fetchRequest()
+        req.fetchLimit = 1
+        req.predicate = NSPredicate(format: "habit == %@ AND date >= %@ AND date < %@",
+                                    habit, TrackHabitHelpers.startOfDay(date) as NSDate, TrackHabitHelpers.endOfDay(date) as NSDate)
+        return try? context?.fetch(req).first
+    }
 
+    // Get or create a log (used when user toggles)
+    func getOrCreateHabitLog(habit: Habits, on date: Date) -> HabitLog {
+        
+        if let existing = fetchHabitLog(habit: habit, on: date) { return existing }
+        if let context = context {
+            let log = HabitLog(context: context)
+            log.habit = habit
+            log.date = TrackHabitHelpers.startOfDay(date)
+            log.isCompleted = false
+            return log
+        }
+       return HabitLog()
+    }
 }

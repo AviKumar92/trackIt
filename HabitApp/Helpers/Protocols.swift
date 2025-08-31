@@ -11,3 +11,8 @@ protocol DataPass {
     
     func refreshPage()
 }
+
+protocol CellCheckMarkDelegate {
+    
+    func OnClickCheckMArk(index: Int)
+}

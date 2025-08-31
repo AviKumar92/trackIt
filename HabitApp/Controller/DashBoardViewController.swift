@@ -7,7 +7,8 @@
 
 import UIKit
 
-class DashBoardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DataPass {
+class DashBoardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DataPass ,CellCheckMarkDelegate{
+    
    
     
     
@@ -89,19 +90,22 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
             case .daily:
                 return true
             case .weekly:
-                let match = habit.weeklyDays?.contains(weekday(from: date)) ?? false
-                print("📅 Weekly \(habit.name ?? "") -> \(match)")
-                return match
+                if let days = habit.weeklyDays {
+                    return days.contains(TrackHabitHelpers.weekdayMondayIsOne(date))
+                }
+                return false
+//                let match = habit.weeklyDays?.contains(weekday(from: date)) ?? false
+//                print("📅 Weekly \(habit.name ?? "") -> \(match)")
+//                return match
             case .monthly:
                 if let dates = habit.monthlyDates {
-                            let selectedDay = Calendar.current.component(.day, from: date)
-                            let match = dates.contains { storedDate in
-                                Calendar.current.component(.day, from: storedDate) == selectedDay
-                            }
-                            print("📆 Monthly \(habit.name ?? "") -> \(match)")
-                            return match
-                        }
+                    let targetDay = TrackHabitHelpers.dayOfMonth(date)
+                               return dates.contains { stored in
+                                   TrackHabitHelpers.dayOfMonth(stored) == targetDay
+                               }
+                           }
                            return false
+
             default:
                 return false
             }
@@ -125,11 +129,27 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     @IBAction func onClickPlusBtn(_ sender: Any) {
-        var vc = AddHabitViewController()
+        let vc = AddHabitViewController()
         vc.dataPassDelegate = self
 //        present(vc, animated: true)
         navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    func OnClickCheckMArk(index: Int) {
+        let habit = filteredHabits[index]
+        let log = DataBaseHelper.sharedInstance.getOrCreateHabitLog(habit: habit, on: selectedDate)
+
+           log.isCompleted.toggle()
+           DataBaseHelper.sharedInstance.save(habit)
+           userTableView.reloadData() //reloadRows(at: index, with: .automatic)
+//
+//           do {
+//               try DataBaseHelper.sharedInstance.save(habit)
+//               tableView.reloadRows(at: [indexPath], with: .automatic)
+//           } catch {
+//               print("Save log failed: \(error)")
+//           }
     }
     
   
@@ -139,7 +159,16 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashBoardTableViewCell", for: indexPath) as! DashBoardTableViewCell
-        cell.bindData(data: filteredHabits[indexPath.row])
+        let habit = filteredHabits[indexPath.row]
+
+        cell.bindData(data: habit, index: indexPath.row)
+        cell.onCheckMarkTapped = self
+        if let log = DataBaseHelper.sharedInstance.fetchHabitLog(habit: habit, on: selectedDate), log.isCompleted {
+            cell.btnCheckMark.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+           } else {
+               cell.btnCheckMark.setImage(UIImage(systemName: "circle"), for: .normal)
+           }
+        
         
         return cell
     }

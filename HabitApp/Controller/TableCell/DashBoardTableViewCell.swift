@@ -15,6 +15,9 @@ class DashBoardTableViewCell: UITableViewCell {
     @IBOutlet weak var profile_Image: UIImageView!
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var btnCheckMark: UIButton!
+    
+    var onCheckMarkTapped: CellCheckMarkDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.layer.cornerRadius = 10
@@ -25,12 +28,16 @@ class DashBoardTableViewCell: UITableViewCell {
 
        
     }
-    func bindData(data: Habits) {
+    func bindData(data: Habits, index: Int) {
       //  lblTime.text = data.time
         lblOne.text = data.name
         lblTwo.text = data.frequency
-    }
+        btnCheckMark.tag = index
+        
+       
+            }
     
     @IBAction func onClickCheckMark(_ sender: Any) {
+        onCheckMarkTapped?.OnClickCheckMArk(index:  btnCheckMark.tag)
     }
 }

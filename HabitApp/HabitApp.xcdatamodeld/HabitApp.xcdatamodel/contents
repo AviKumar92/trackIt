@@ -4,6 +4,12 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="rollNo" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="HabitLog" representedClassName="HabitLog" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habits" inverseName="completions" inverseEntity="Habits"/>
+    </entity>
     <entity name="Habits" representedClassName="Habits" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="frequency" optional="YES" attributeType="String"/>
@@ -13,6 +19,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="weeklyDays" optional="YES" attributeType="Transformable"/>
+        <attribute name="weeklyDays" optional="YES" attributeType="Transformable" valueTransformerName="IntArrayTransformer"/>
+        <relationship name="completions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HabitLog" inverseName="habit" inverseEntity="HabitLog"/>
     </entity>
 </model>
