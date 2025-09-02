@@ -21,6 +21,8 @@ class DashBoardTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.layer.cornerRadius = 10
+        bgView.backgroundColor = UIColor(red: 246/255, green: 199/255, blue: 140/255, alpha: 1.0)
+            
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

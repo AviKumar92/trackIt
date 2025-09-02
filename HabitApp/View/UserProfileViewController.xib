@@ -23,7 +23,7 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_pic" translatesAutoresizingMaskIntoConstraints="NO" id="Ric-4s-nny">
                     <rect key="frame" x="131.66666666666666" y="168" width="129.99999999999997" height="130"/>
-                    <color key="backgroundColor" red="0.32378227329999998" green="0.80817047220000005" blue="0.63198908980000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="KEI-2V-3eU"/>
                         <constraint firstAttribute="height" constant="130" id="tBI-qW-SVh"/>

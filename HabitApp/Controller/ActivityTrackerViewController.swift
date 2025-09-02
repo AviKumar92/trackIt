@@ -58,7 +58,13 @@ class ActivityTrackerViewController: UIViewController {
             activityMapView.setRegion(region, animated: true)
         }
     }
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let top = UIColor(red: 158/255, green: 235/255, blue: 199/255, alpha: 1)   // #9EEBC7
+                let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
+                view.applyGradient(colors: [top, bottom])
+    }
     
     func setUpActivityTracker(){
         activityMapView.showsUserLocation = true

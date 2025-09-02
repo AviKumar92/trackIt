@@ -220,7 +220,7 @@
                                 </switch>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-xG-bbw">
                                     <rect key="frame" x="35" y="813.33333333333337" width="323" height="48"/>
-                                    <color key="backgroundColor" red="0.096057489802040846" green="0.70060744497414973" blue="0.43096241249319728" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.96470588235294119" green="0.7803921568627451" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="bc4-Ij-Aug"/>
                                     </constraints>
@@ -234,7 +234,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.6026529361744698" green="0.80350827831132454" blue="0.5491071428571429" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="GA7-12-0H4" firstAttribute="leading" secondItem="7Nz-ph-j0N" secondAttribute="leading" constant="35" id="11g-Zg-cZr"/>
                                 <constraint firstAttribute="bottom" secondItem="bfN-xG-bbw" secondAttribute="bottom" constant="30" id="1WN-VU-EMP"/>
@@ -287,7 +287,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" red="0.69411766529999996" green="0.92941176889999999" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="pB6-6E-3CD" secondAttribute="top" id="4lB-Oa-6e6"/>
                 <constraint firstItem="pB6-6E-3CD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wy5-Dw-2l5"/>

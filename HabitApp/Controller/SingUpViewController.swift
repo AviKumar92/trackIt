@@ -34,6 +34,13 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
                 addDoneButtonOnKeyboard(for: txtPassword)
         
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let top = UIColor(red: 158/255, green: 235/255, blue: 199/255, alpha: 1)   // #9EEBC7
+                let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
+                view.applyGradient(colors: [top, bottom])
+    }
     
     func addDoneButtonOnKeyboard(for textField: UITextField) {
            let toolbar = UIToolbar()
@@ -148,4 +155,5 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+
 

@@ -12,11 +12,7 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     
    
     @IBOutlet weak var barChatView: BarChartView!
-    
-    
-
     @IBOutlet weak var userTableView: UITableView!
-   
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var lblDay: UILabel!
     @IBOutlet weak var lblName: UILabel!
@@ -45,12 +41,21 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         fetchHabbits()
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let top = UIColor(red: 158/255, green: 235/255, blue: 199/255, alpha: 1)   // #9EEBC7
+                let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
+                view.applyGradient(colors: [top, bottom])
+    }
+
     func setUpCalendarUI(){
         calendarView.layer.cornerRadius = 10
         calendarView.layer.borderWidth = 1
         calendarView.layer.borderColor = UIColor.purple.cgColor
         calendarView.layer.masksToBounds = true
-        calendarView.backgroundColor = UIColor.gray
+        calendarView.backgroundColor = UIColor(red: 246/255, green: 199/255, blue: 140/255, alpha: 1.0)
         calendarView.scope = .week
         
        // calendarView.weekdayHeight = 40

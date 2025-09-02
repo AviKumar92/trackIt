@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -47,13 +46,13 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="Aad-jR-1Mb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="streak 3 days" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qB-Wh-18q">
-                                        <rect key="frame" x="59.999999999999972" y="39" width="415.33333333333326" height="14.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <rect key="frame" x="59.999999999999972" y="39" width="415.33333333333326" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -91,7 +90,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PJw-fF-JKa" firstAttribute="top" secondItem="0YW-WE-acp" secondAttribute="top" id="HDX-Hy-1QN"/>
                             <constraint firstAttribute="trailing" secondItem="PJw-fF-JKa" secondAttribute="trailing" id="L0e-F9-4jk"/>
@@ -102,6 +101,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="0YW-WE-acp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Exc-LU-8PA"/>
                     <constraint firstAttribute="trailing" secondItem="0YW-WE-acp" secondAttribute="trailing" id="Psm-rA-4cI"/>
@@ -110,6 +110,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="bgView" destination="0YW-WE-acp" id="qAN-Jd-smu"/>
                 <outlet property="btnCheckMark" destination="owM-O6-OZ4" id="f9g-8T-6vk"/>
@@ -125,8 +126,5 @@
         <image name="Profile_pic" width="16" height="16"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="clock.arrow.trianglehead.counterclockwise.rotate.90" catalog="system" width="128" height="119"/>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

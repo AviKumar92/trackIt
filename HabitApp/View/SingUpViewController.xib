@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,38 +29,38 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fu-YM-nQX">
-                                    <rect key="frame" x="35" y="30" width="323" height="36"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                    <rect key="frame" x="35" y="60" width="323" height="42"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                     <color key="textColor" red="0.25306594371795654" green="0.18741142749786377" blue="0.061441875994205475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D8f-nV-iA3">
-                                    <rect key="frame" x="35" y="216" width="323" height="48"/>
+                                    <rect key="frame" x="35" y="202" width="323" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="KJT-zj-zB9"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tOv-l1-5vS">
-                                    <rect key="frame" x="35" y="284" width="323" height="48"/>
+                                    <rect key="frame" x="35" y="270" width="323" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="yGf-he-qAg"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWU-tz-bQ7">
-                                    <rect key="frame" x="35" y="420" width="323" height="50"/>
+                                    <rect key="frame" x="35" y="406" width="323" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="lOg-te-nWh"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0j-eO-NGD">
-                                    <rect key="frame" x="50" y="510" width="293" height="48"/>
-                                    <color key="backgroundColor" systemColor="linkColor"/>
+                                    <rect key="frame" x="50" y="496" width="293" height="48"/>
+                                    <color key="backgroundColor" red="0.96470588235294119" green="0.7803921568627451" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="SRC-ZZ-vMZ"/>
                                     </constraints>
@@ -75,14 +74,14 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juS-sB-sAh">
-                                    <rect key="frame" x="35" y="352" width="323" height="48"/>
+                                    <rect key="frame" x="35" y="338" width="323" height="48"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="qHb-U7-6sB"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="DOB">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -93,10 +92,10 @@
                             <color key="backgroundColor" red="0.94361931085586548" green="0.97352200746536255" blue="0.92118304967880249" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="D8f-nV-iA3" firstAttribute="top" secondItem="8fu-YM-nQX" secondAttribute="bottom" constant="150" id="2s5-yL-dzv"/>
+                                <constraint firstItem="D8f-nV-iA3" firstAttribute="top" secondItem="8fu-YM-nQX" secondAttribute="bottom" constant="100" id="2s5-yL-dzv"/>
                                 <constraint firstItem="juS-sB-sAh" firstAttribute="top" secondItem="tOv-l1-5vS" secondAttribute="bottom" constant="20" id="6xj-zv-r5g"/>
                                 <constraint firstItem="juS-sB-sAh" firstAttribute="leading" secondItem="795-0Y-j7V" secondAttribute="leading" constant="35" id="Iy2-qK-Twt"/>
-                                <constraint firstItem="8fu-YM-nQX" firstAttribute="top" secondItem="795-0Y-j7V" secondAttribute="top" constant="30" id="L4e-aQ-fc3"/>
+                                <constraint firstItem="8fu-YM-nQX" firstAttribute="top" secondItem="795-0Y-j7V" secondAttribute="top" constant="60" id="L4e-aQ-fc3"/>
                                 <constraint firstAttribute="trailing" secondItem="8fu-YM-nQX" secondAttribute="trailing" constant="35" id="SXv-Ym-YIj"/>
                                 <constraint firstItem="mWU-tz-bQ7" firstAttribute="top" secondItem="juS-sB-sAh" secondAttribute="bottom" constant="20" id="UrS-g3-Mjy"/>
                                 <constraint firstItem="tOv-l1-5vS" firstAttribute="top" secondItem="D8f-nV-iA3" secondAttribute="bottom" constant="20" id="Z00-nh-QM1"/>
@@ -137,9 +136,4 @@
             <point key="canvasLocation" x="100" y="20.422535211267608"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

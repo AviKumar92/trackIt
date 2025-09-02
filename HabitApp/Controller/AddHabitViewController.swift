@@ -64,7 +64,7 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         }
         
         resetButtonColors()
-        btnDaily.backgroundColor = .green
+        btnDaily.backgroundColor = UIColor(red: 246/255, green: 199/255, blue: 140/255, alpha: 1.0)
         montlyView.delegate = self
         montlyView.dataSource = self
     }
@@ -72,6 +72,13 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         tabBarController?.tabBar.isHidden = false
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let top = UIColor(red: 158/255, green: 235/255, blue: 199/255, alpha: 1)   // #9EEBC7
+                let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
+                view.applyGradient(colors: [top, bottom])
+    }
     func registerCell(){
         weeklyCollectionView.allowsMultipleSelection = true
         let cell = UINib(nibName: "WeekDayCollectionViewCell", bundle: nil)
@@ -223,7 +230,7 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         
         @IBAction func onClickDailyBtn(_ sender: Any) {
             resetButtonColors()
-            btnDaily.backgroundColor = .green
+            btnDaily.backgroundColor = UIColor(red: 246/255, green: 199/255, blue: 140/255, alpha: 1.0)
             frequecyContainerStack.isHidden = true
             SelecteFrequencyOption = .daily
         }
@@ -231,7 +238,7 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         
         @IBAction func onClickMonthlyBtn(_ sender: Any) {
             resetButtonColors()
-            btnMonthly.backgroundColor = .green
+            btnMonthly.backgroundColor = UIColor(red: 246/255, green: 199/255, blue: 140/255, alpha: 1.0)
             frequecyContainerStack.isHidden = false
             weeklyView.isHidden = true
             montlyView.isHidden = false
@@ -239,7 +246,7 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         }
         @IBAction func onClickWeeklyBtn(_ sender: Any) {
             resetButtonColors()
-            btnWeekly.backgroundColor = .green
+            btnWeekly.backgroundColor = UIColor(red: 246/255, green: 199/255, blue: 140/255, alpha: 1.0)
             frequecyContainerStack.isHidden = false
             montlyView.isHidden = true
             weeklyView.isHidden = false

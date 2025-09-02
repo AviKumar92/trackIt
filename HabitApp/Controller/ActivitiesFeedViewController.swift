@@ -40,6 +40,13 @@ class ActivitiesFeedViewController: UIViewController {
                                                        object: nil)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let top = UIColor(red: 158/255, green: 235/255, blue: 199/255, alpha: 1)   // #9EEBC7
+                let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
+                view.applyGradient(colors: [top, bottom])
+    }
     @objc private func reloadData() {
             ActivityStore.shared.load { [weak self] items in
                 self?.activities = items

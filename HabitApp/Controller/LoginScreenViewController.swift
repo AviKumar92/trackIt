@@ -7,8 +7,10 @@
 
 import UIKit
 
+import IQKeyboardManagerSwift
 class LoginScreenViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var ContentView: UIView!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var txtPasssword: UITextField!
@@ -25,13 +27,20 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
                 // Add Done button to both textfields
                 addDoneButtonOnKeyboard(for: txtEmail)
                 addDoneButtonOnKeyboard(for: txtPasssword)
-        addWaveBackground(to: view)
+//        addWaveBackground(to: )
 
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let top = UIColor(red: 158/255, green: 235/255, blue: 199/255, alpha: 1)   // #9EEBC7
+                let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
+                view.applyGradient(colors: [top, bottom])
     }
     
     func addWaveBackground(to view: UIView) {
         let width = view.bounds.width
-        let height = view.bounds.height
+        let height = UIScreen.main.bounds.height
 
         // Orange background (top)
         let backgroundLayer = CALayer()
@@ -108,5 +117,24 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onClickSignUpBtn(_ sender: Any) {
         let vc = SingUpViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+
+extension UIView {
+    func applyGradient(colors: [UIColor],
+                       startPoint: CGPoint = CGPoint(x: 0.5, y: 0.0),
+                       endPoint: CGPoint = CGPoint(x: 0.5, y: 1.0)) {
+        // remove any old gradient layers
+        layer.sublayers?.removeAll { $0 is CAGradientLayer }
+
+        let g = CAGradientLayer()
+        g.frame = bounds
+        g.colors = colors.map { $0.cgColor }
+        g.startPoint = startPoint   // top
+        g.endPoint = endPoint       // bottom
+        g.locations = [0.0, 1.0]    // exact stops
+        layer.insertSublayer(g, at: 0)
     }
 }
