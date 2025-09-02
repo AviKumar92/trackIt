@@ -70,4 +70,18 @@ class Utility {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
 
+    static func showAlertWithAction(withTitle title: String, message: String, completion: (() -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Call the completion block if provided
+            completion?()
+        }
+        alertController.addAction(okAction)
+        
+        // Present the alert
+        if let viewController = UIApplication.shared.keyWindow?.rootViewController {
+            viewController.present(alertController, animated: true, completion: nil)
+        }
+    }
 }

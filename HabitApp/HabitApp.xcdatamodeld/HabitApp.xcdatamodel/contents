@@ -23,9 +23,12 @@
         <relationship name="completions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HabitLog" inverseName="habit" inverseEntity="HabitLog"/>
     </entity>
     <entity name="UserDataModel" representedClassName="UserDataModel" syncable="YES">
+        <attribute name="bloodGroup" optional="YES" attributeType="String"/>
         <attribute name="dob" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="profileImage" optional="YES" attributeType="Binary"/>
     </entity>
 </model>

@@ -18,9 +18,11 @@ class UpdateUserProfileViewController: UIViewController, UIImagePickerController
     @IBOutlet weak var btnChangeImage: UIButton!
     @IBOutlet weak var userUpdateProfile: UIImageView!
     var imagePicker:  UIImagePickerController?
+    var selectedProfileImg: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         Utility.setCornerRadius(view: userUpdateProfile, cornerRadius: 40)
         Utility.setCornerRadius(view: btnUpdate, cornerRadius: 10)
         Utility.setCornerRadius(view: txtName, cornerRadius: 10)
@@ -30,10 +32,34 @@ class UpdateUserProfileViewController: UIViewController, UIImagePickerController
         imagePicker = UIImagePickerController()
         self.imagePicker?.delegate = self
         
-
+        addDoneButtonOnKeyboard(for: txtName)
+        addDoneButtonOnKeyboard(for: txtLastName)
+        addDoneButtonOnKeyboard(for: txtBloodGroup)
+        addDoneButtonOnKeyboard(for: btnGender)
        
     }
 
+    
+    func addDoneButtonOnKeyboard(for textField: UITextField) {
+           let toolbar = UIToolbar()
+           toolbar.sizeToFit()
+           
+           let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+           let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
+           
+           toolbar.items = [flexSpace, doneButton]
+           textField.inputAccessoryView = toolbar
+       }
+       
+       @objc func doneTapped() {
+           view.endEditing(true) // hides keyboard for all textfields
+       }
+       
+       // Optional: Hide keyboard when pressing return
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
 
     @IBAction func onClickChangedBtn(_ sender: Any) {
         let alert  = UIAlertController(title: "Select Image", message: "", preferredStyle: .actionSheet)
@@ -82,12 +108,45 @@ class UpdateUserProfileViewController: UIViewController, UIImagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image  = info[UIImagePickerController.InfoKey(rawValue:  UIImagePickerController.InfoKey.originalImage.rawValue) ] as? UIImage {
             userUpdateProfile.image = image
-//            selectedProfileImg = image
+            selectedProfileImg = image
+            
+            if let pickedImage = selectedProfileImg,
+               let imageData = pickedImage.jpegData(compressionQuality: 0.8) {
+                SessionManager.shared.currentUser?.profileImage = imageData
+                
+                // Save back to Core Data
+                AuthDataHelper.shared.saveContext()
+            }
+
+            
             picker.dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func onClickUpdateBtn(_ sender: Any) {
+        
+        guard let email = UserDefaults.standard.string(forKey: "loggedInUserEmail") else { return }
+               
+               let success = AuthDataHelper.shared.updateUser(
+                   email: email,
+                   firstName: txtName.text,
+                   lastName: txtLastName.text,
+                   bloodGroup: txtBloodGroup.text,
+                   dob: Date(),
+                   profileImage: selectedProfileImg
+               )
+               
+        if success {
+            Utility.showAlertWithAction(withTitle: "Success", message: "Profile successful updated") {
+                //                       print(successResponse)
+                if (self.navigationController != nil) {
+                    
+                    self.navigationController?.popViewController(animated: true);
+                }
+                
+            }} else {
+                   Utility.showAlert(Messeage: "Failed to update profile", ParentViewController: self)
+               }
     }
     
 }

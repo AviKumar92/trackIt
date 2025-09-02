@@ -41,6 +41,7 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         registerCell()
         addDoneButtonOnKeyboard()
         addDoneButtonOnKeyboardForNote()
@@ -66,6 +67,9 @@ class AddHabitViewController: UIViewController , FSCalendarDelegate,FSCalendarDa
         btnDaily.backgroundColor = .green
         montlyView.delegate = self
         montlyView.dataSource = self
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
     
     func registerCell(){

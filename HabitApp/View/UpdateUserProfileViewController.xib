@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="btnChangeImage" destination="CSe-9e-23T" id="ep8-NS-tyP"/>
                 <outlet property="btnGender" destination="EHI-d4-ldv" id="goh-j2-uYn"/>
-                <outlet property="btnUpdate" destination="CSe-9e-23T" id="eTa-6J-gP7"/>
+                <outlet property="btnUpdate" destination="OwS-ZS-ass" id="eX1-oH-wjR"/>
                 <outlet property="txtBloodGroup" destination="x3S-UI-TY7" id="FYM-q8-6jq"/>
                 <outlet property="txtLastName" destination="jqw-lu-rkf" id="UKm-ua-cPe"/>
                 <outlet property="txtName" destination="w8m-3U-IVh" id="fUA-mr-ZTg"/>
@@ -58,6 +58,9 @@
                     <buttonConfiguration key="configuration" style="plain" title="Update">
                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="onClickUpdateBtn:" destination="-1" eventType="touchUpInside" id="PaR-jz-hAi"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-d4-ldv">
                     <rect key="frame" x="35" y="428" width="323" height="50"/>

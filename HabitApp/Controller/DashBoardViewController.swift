@@ -41,6 +41,7 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
         fetchHabbits()
     }
     

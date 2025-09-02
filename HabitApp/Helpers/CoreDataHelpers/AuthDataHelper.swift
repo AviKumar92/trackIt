@@ -22,7 +22,7 @@ class AuthDataHelper {
             }
             
             let user = UserDataModel(context: context)
-            user.name = name
+            user.firstName = name
             user.email = email
             user.dob = dob
             user.password = password
@@ -53,8 +53,42 @@ class AuthDataHelper {
         // Validate login
         func validateUser(email: String, password: String) -> Bool {
             if let user = fetchUser(email: email) {
+                SessionManager.shared.currentUser = user
                 return user.password == password
             }
             return false
+        }
+    
+    func updateUser(email: String, firstName: String?, lastName: String?, bloodGroup: String?, dob: Date?, profileImage: UIImage?) -> Bool {
+        guard let user = fetchUser(email: email) else { return false }
+        
+        if let firstName = firstName { user.firstName = firstName }
+        if let lastName = lastName { user.lastName = lastName }
+        if let bloodGroup = bloodGroup { user.bloodGroup = bloodGroup }
+        if let dob = dob { user.dob = dob }
+        if let profileImage = profileImage {
+            user.profileImage = profileImage.jpegData(compressionQuality: 0.8)
+        }
+        
+        do {
+            try context.save()
+            return true
+        } catch {
+            print("Error updating user: \(error)")
+            return false
+        }
+    }
+
+    // MARK: - Save Context
+        func saveContext() {
+            if context.hasChanges {
+                do {
+                    try context.save()
+                    print("✅ Core Data save successful")
+                } catch {
+                    let nserror = error as NSError
+                    print("❌ Core Data save failed: \(nserror), \(nserror.userInfo)")
+                }
+            }
         }
 }

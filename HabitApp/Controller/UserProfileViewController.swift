@@ -20,15 +20,34 @@ class UserProfileViewController: UIViewController {
         Utility.setCornerRadius(view: userProfileImage, cornerRadius: 60)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+        fetchData()
+    }
     
-    
+    func fetchData(){
+        if let user = SessionManager.shared.currentUser {
+//            lblName.text = user.firstName
+            if let imgData = user.profileImage {
+                userProfileImage.image = UIImage(data: imgData)
+            } else {
+                userProfileImage.image = UIImage(systemName: "person.circle")
+            }
+        }
+
+    }
     
     @IBAction func onClickSignOut(_ sender: Any) {
-        if let email = UserDefaults.standard.string(forKey: "loggedInUserEmail"),
-           let user = AuthDataHelper.shared.fetchUser(email: email) {
-            print("Logged in user: \(user.name ?? "")")
-        }
-        
+//        if let email = UserDefaults.standard.string(forKey: "loggedInUserEmail"),
+//           let user = AuthDataHelper.shared.fetchUser(email: email) {
+//            print("Logged in user: \(user.firstName ?? "")")
+//            Utility.setRootViewController(rootVC: LoginScreenViewController())
+//        }
+        SessionManager.shared.logout()
+        // 2. Update UserDefaults
+           UserDefaults.standard.set(false, forKey: "isLoggedIn")
+           UserDefaults.standard.synchronize()
+        Utility.setRootViewController(rootVC: LoginScreenViewController())
     }
     
     @IBAction func onClickEditBtn(_ sender: Any) {

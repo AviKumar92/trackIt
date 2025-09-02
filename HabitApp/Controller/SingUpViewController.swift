@@ -100,7 +100,13 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
                 let success = AuthDataHelper.shared.saveUser(name: name, email: email, dob: dob, password: password)
                 
                 if success {
-                    Utility.showAlert(Messeage: "Signup Successful", ParentViewController: self)
+                    Utility.showAlertWithAction(withTitle: "Success", message: "Signup successful!") {
+//                        print(successResponse)
+                        if (self.navigationController != nil) {
+                            
+                            self.navigationController?.popViewController(animated: true);
+                        }
+                    }
                 } else {
                     Utility.showAlert(Messeage: "User already exists", ParentViewController: self)
                 }
