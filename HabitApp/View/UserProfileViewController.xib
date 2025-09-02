@@ -10,7 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserProfileViewController" customModule="HabitApp" customModuleProvider="target">
             <connections>
-                <outlet property="userProfileTableView" destination="qVx-1o-MeS" id="IuE-0p-w5N"/>
+                <outlet property="btnEdit" destination="q6K-pi-PNb" id="AmX-Ck-bIu"/>
+                <outlet property="btnSignOut" destination="MIb-ZC-Ux7" id="Tc9-ea-4CV"/>
+                <outlet property="userProfileImage" destination="Ric-4s-nny" id="S6L-Aa-Ks8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,23 +21,58 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qVx-1o-MeS">
-                    <rect key="frame" x="0.0" y="118" width="393" height="666"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_pic" translatesAutoresizingMaskIntoConstraints="NO" id="Ric-4s-nny">
+                    <rect key="frame" x="131.66666666666666" y="168" width="129.99999999999997" height="130"/>
+                    <color key="backgroundColor" red="0.32378227329999998" green="0.80817047220000005" blue="0.63198908980000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="KEI-2V-3eU"/>
+                        <constraint firstAttribute="height" constant="130" id="tBI-qW-SVh"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6K-pi-PNb">
+                    <rect key="frame" x="40" y="334" width="313" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="0L9-8F-drm"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Edit">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="24"/>
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="onClickEditBtn:" destination="-1" eventType="touchUpInside" id="se9-tq-3e2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIb-ZC-Ux7">
+                    <rect key="frame" x="40" y="398" width="313" height="42.666666666666686"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Sign Out">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="24"/>
+                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="onClickSignOut:" destination="-1" eventType="touchUpInside" id="C1X-co-hDK"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qVx-1o-MeS" secondAttribute="bottom" id="DTO-Be-NJM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qVx-1o-MeS" secondAttribute="trailing" id="Z42-IY-3af"/>
-                <constraint firstItem="qVx-1o-MeS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="evf-I2-F8J"/>
-                <constraint firstItem="qVx-1o-MeS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rJS-Mt-C88"/>
+                <constraint firstItem="q6K-pi-PNb" firstAttribute="top" secondItem="Ric-4s-nny" secondAttribute="bottom" constant="36" id="2oh-sM-HqN"/>
+                <constraint firstItem="MIb-ZC-Ux7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="DZ0-Us-0nS"/>
+                <constraint firstItem="Ric-4s-nny" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="K6G-jo-9Rm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MIb-ZC-Ux7" secondAttribute="trailing" constant="40" id="c5o-FS-ftW"/>
+                <constraint firstItem="MIb-ZC-Ux7" firstAttribute="top" secondItem="q6K-pi-PNb" secondAttribute="bottom" constant="20" id="nJD-9c-3Fs"/>
+                <constraint firstItem="q6K-pi-PNb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="uF7-Kz-q80"/>
+                <constraint firstItem="Ric-4s-nny" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="wY0-mf-AxI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="q6K-pi-PNb" secondAttribute="trailing" constant="40" id="xAB-vV-bKR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MIb-ZC-Ux7" secondAttribute="bottom" constant="30" id="xDe-VJ-YWr"/>
             </constraints>
             <point key="canvasLocation" x="101" y="21"/>
         </view>
     </objects>
     <resources>
+        <image name="Profile_pic" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

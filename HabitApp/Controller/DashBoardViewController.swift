@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import DGCharts
 
 class DashBoardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DataPass ,CellCheckMarkDelegate{
     
    
+    @IBOutlet weak var barChatView: BarChartView!
     
     
 
     @IBOutlet weak var userTableView: UITableView!
-    @IBOutlet weak var lblNotification: UIView!
+   
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var lblDay: UILabel!
     @IBOutlet weak var lblName: UILabel!
@@ -28,16 +30,15 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCalendarUI()
-        lblNotification.layer.cornerRadius = 10
+        barChatView.layer.cornerRadius = 10
         userImage.layer.cornerRadius = 20
         let nibcell = UINib(nibName: "DashBoardTableViewCell", bundle: nil)
         userTableView.register(nibcell, forCellReuseIdentifier: "DashBoardTableViewCell")
         userTableView.dataSource = self
         userTableView.delegate = self
-       
+       //  setupChart()
        // addCalender()
         
-       
     }
     override func viewWillAppear(_ animated: Bool) {
         fetchHabbits()
@@ -69,6 +70,28 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         calendarView.dataSource = self
 
     }
+    
+    func setupChart() {
+        let dataPoints = TrackHabitHelpers.getCompletionCounts(forLastNDays: 7)
+            
+            let entries = dataPoints.enumerated().map { (index, item) in
+                return BarChartDataEntry(x: Double(index), y: Double(item.count))
+            }
+            
+            let dataSet = BarChartDataSet(entries: entries, label: "Habits Completed")
+            dataSet.colors = ChartColorTemplates.pastel()
+            
+            let data = BarChartData(dataSet: dataSet)
+          barChatView.data = data
+        data.barWidth = 0.4
+
+            
+            // Customize
+        barChatView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints.map {
+                DateFormatter.shortWeekday.string(from: $0.date)
+            })
+        barChatView.xAxis.granularity = 1
+        }
     
     func fetchHabbits(){
         selectedDate = Date() // Default date = today

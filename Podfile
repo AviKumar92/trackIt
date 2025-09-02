@@ -8,5 +8,6 @@ target 'HabitApp' do
   # Pods for HabitApp
 
   pod 'IQKeyboardManagerSwift'
+  pod 'DGCharts'
 
 end

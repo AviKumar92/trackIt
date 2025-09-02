@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashBoardViewController" customModule="HabitApp" customModuleProvider="target">
             <connections>
+                <outlet property="barChatView" destination="SdV-WM-szp" id="vD2-Se-kP4"/>
                 <outlet property="calendarHeightConstraint" destination="BKY-8R-0YF" id="HGF-Gr-Vju"/>
                 <outlet property="calendarView" destination="lFt-oB-n0E" id="xvS-68-cr6"/>
                 <outlet property="lblDay" destination="r5o-ia-D4E" id="81i-0G-1kB"/>
                 <outlet property="lblName" destination="wiL-TY-eMV" id="P3j-MU-ivN"/>
-                <outlet property="lblNotification" destination="SdV-WM-szp" id="CXB-HA-TlV"/>
                 <outlet property="userImage" destination="AjC-YX-WnV" id="XsE-OK-7g8"/>
                 <outlet property="userTableView" destination="YMw-ft-P0f" id="lge-YV-Rx4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,7 +31,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_pic" translatesAutoresizingMaskIntoConstraints="NO" id="AjC-YX-WnV">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="floatingAdd" translatesAutoresizingMaskIntoConstraints="NO" id="AjC-YX-WnV">
                     <rect key="frame" x="333" y="128" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Nyv-cR-DcJ"/>
@@ -55,7 +55,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-WM-szp">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-WM-szp" customClass="BarChartView" customModule="DGCharts">
                     <rect key="frame" x="20" y="546.66666666666663" width="363" height="150"/>
                     <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="0.3435430463576159" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -78,7 +78,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMc-Px-hmg">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMc-Px-hmg">
                     <rect key="frame" x="298" y="1496" width="45" height="45"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="LNJ-dw-ElL"/>
@@ -88,8 +88,13 @@
                     <buttonConfiguration key="configuration" style="plain">
                         <backgroundConfiguration key="background" image="floatingAdd"/>
                     </buttonConfiguration>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qa7-L1-BvH">
+                    <rect key="frame" x="320.66666666666669" y="135.66666666666666" width="75" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
-                        <action selector="onClickPlusBtn:" destination="-1" eventType="touchUpInside" id="WnT-x6-KsG"/>
+                        <action selector="onClickPlusBtn:" destination="-1" eventType="touchUpInside" id="qaW-TB-D6a"/>
                     </connections>
                 </button>
             </subviews>
@@ -104,8 +109,10 @@
                 <constraint firstItem="lFt-oB-n0E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7b3-La-UhM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9jm-E2-U3x" secondAttribute="trailing" constant="20" id="8f8-JL-VrZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YMw-ft-P0f" secondAttribute="bottom" constant="10" id="AAc-Bm-VpQ"/>
+                <constraint firstItem="qa7-L1-BvH" firstAttribute="height" secondItem="AjC-YX-WnV" secondAttribute="height" multiplier="0.7" id="NPz-1o-5kJ"/>
                 <constraint firstItem="9jm-E2-U3x" firstAttribute="top" secondItem="SdV-WM-szp" secondAttribute="bottom" constant="20" id="PX3-He-kIX"/>
                 <constraint firstItem="wiL-TY-eMV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UsG-kd-xK1"/>
+                <constraint firstItem="qa7-L1-BvH" firstAttribute="centerY" secondItem="AjC-YX-WnV" secondAttribute="centerY" id="VKm-Xk-kE6"/>
                 <constraint firstItem="r5o-ia-D4E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="WAe-3E-Ppw"/>
                 <constraint firstItem="9jm-E2-U3x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="X1U-ep-n1A"/>
                 <constraint firstItem="r5o-ia-D4E" firstAttribute="top" secondItem="wiL-TY-eMV" secondAttribute="bottom" constant="15" id="X82-bN-qp0"/>
@@ -118,6 +125,8 @@
                 <constraint firstItem="lFt-oB-n0E" firstAttribute="top" secondItem="r5o-ia-D4E" secondAttribute="bottom" constant="20" id="o7i-ot-MSc"/>
                 <constraint firstItem="YMw-ft-P0f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="oXB-9L-vsB"/>
                 <constraint firstItem="AjC-YX-WnV" firstAttribute="leading" secondItem="wiL-TY-eMV" secondAttribute="trailing" constant="10" id="tIi-yH-NAL"/>
+                <constraint firstItem="qa7-L1-BvH" firstAttribute="width" secondItem="AjC-YX-WnV" secondAttribute="width" multiplier="1.5" id="uEZ-rs-Kn8"/>
+                <constraint firstItem="qa7-L1-BvH" firstAttribute="centerX" secondItem="AjC-YX-WnV" secondAttribute="centerX" id="xX3-Mo-Olh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OMc-Px-hmg" secondAttribute="bottom" constant="30" id="zDx-yB-WtM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -125,7 +134,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Profile_pic" width="16" height="16"/>
         <image name="floatingAdd" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

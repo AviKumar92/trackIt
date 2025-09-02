@@ -29,8 +29,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(dismissSplashController), userInfo: nil, repeats: false)
     }
     @objc func dismissSplashController(){
-        let viewController =   LoginScreenViewController()
-        self.window?.rootViewController = viewController
+        
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+            
+            if isLoggedIn {
+                // User already logged in → go to Home
+                window?.rootViewController = HomeTabBar()
+            } else {
+                // Show Login screen
+                let loginVC = LoginScreenViewController()
+                let nav = UINavigationController(rootViewController: loginVC)
+                window?.rootViewController = nav
+            }
+        
+//        let viewController =  UINavigationController(rootViewController: LoginScreenViewController()) //LoginScreenViewController()
+//        self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
     }
 

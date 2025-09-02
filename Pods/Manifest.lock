@@ -1,4 +1,7 @@
 PODS:
+  - DGCharts (5.1.0):
+    - DGCharts/Core (= 5.1.0)
+  - DGCharts/Core (5.1.0)
   - IQKeyboardCore (1.0.5)
   - IQKeyboardManagerSwift (8.0.1):
     - IQKeyboardManagerSwift/Appearance (= 8.0.1)
@@ -41,10 +44,12 @@ PODS:
     - IQKeyboardToolbar/Placeholderable
 
 DEPENDENCIES:
+  - DGCharts
   - IQKeyboardManagerSwift
 
 SPEC REPOS:
   trunk:
+    - DGCharts
     - IQKeyboardCore
     - IQKeyboardManagerSwift
     - IQKeyboardNotification
@@ -55,6 +60,7 @@ SPEC REPOS:
     - IQTextView
 
 SPEC CHECKSUMS:
+  DGCharts: 1c6daf585b6cfc78807af44ea690d357c410627f
   IQKeyboardCore: 28c8bf3bcd8ba5aa1570b318cbc4da94b861711e
   IQKeyboardManagerSwift: 835fc9c6e4732398113406d84900ad2e8f141218
   IQKeyboardNotification: d7382c4466c5a5adef92c7452ebf861b36050088
@@ -64,6 +70,6 @@ SPEC CHECKSUMS:
   IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
 
-PODFILE CHECKSUM: 0326cdfe598eb00e4e1235d71fad905084d2505b
+PODFILE CHECKSUM: 0cedf9a2a82b2c3e0190f2223e3d22e3286bbbc2
 
 COCOAPODS: 1.16.2

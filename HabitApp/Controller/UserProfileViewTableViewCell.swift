@@ -21,9 +21,6 @@ class UserProfileViewTableViewCell: UITableViewCell {
        
     }
     
-    func bindData(data:SidemenuDataModel){
-        
-        lblName.text = data.title
-    }
+    
     
 }
