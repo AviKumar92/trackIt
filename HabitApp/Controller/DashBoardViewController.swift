@@ -10,7 +10,8 @@ import DGCharts
 
 class DashBoardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,DataPass ,CellCheckMarkDelegate{
     
-   
+    @IBOutlet weak var tableTopConstant: NSLayoutConstraint!
+    
     @IBOutlet weak var barChatView: BarChartView!
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var userImage: UIImageView!
@@ -32,8 +33,8 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         userTableView.register(nibcell, forCellReuseIdentifier: "DashBoardTableViewCell")
         userTableView.dataSource = self
         userTableView.delegate = self
-       //  setupChart()
-       // addCalender()
+        setupChart()
+        // addCalender()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -41,15 +42,19 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         fetchHabbits()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        updateTableHeight()
+
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        updateTableHeight()
         let top = UIColor(red: 158/255, green: 235/255, blue: 199/255, alpha: 1)   // #9EEBC7
-                let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
-                view.applyGradient(colors: [top, bottom])
+        let bottom = UIColor(red: 255/255, green: 241/255, blue: 166/255, alpha: 1) // #FFF1A6
+        view.applyGradient(colors: [top, bottom])
     }
-
+    
     func setUpCalendarUI(){
         calendarView.layer.cornerRadius = 10
         calendarView.layer.borderWidth = 1
@@ -58,52 +63,52 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         calendarView.backgroundColor = UIColor(red: 246/255, green: 199/255, blue: 140/255, alpha: 1.0)
         calendarView.scope = .week
         
-       // calendarView.weekdayHeight = 40
+        // calendarView.weekdayHeight = 40
         calendarView.rowHeight = 120
-
+        
         calendarView.appearance.headerDateFormat = "MMMM yyyy"
         calendarView.appearance.headerTitleColor = .black
         calendarView.appearance.headerTitleFont = UIFont.systemFont(ofSize: 16, weight: .medium)
-
+        
         calendarView.appearance.weekdayTextColor = .blue
         calendarView.appearance.weekdayFont = UIFont.systemFont(ofSize: 14, weight: .medium)
-
+        
         calendarView.appearance.todayColor = .systemBlue
         calendarView.appearance.selectionColor = .systemRed
         calendarView.appearance.titleDefaultColor = .black
         calendarView.appearance.titleFont = UIFont.systemFont(ofSize: 14)
         calendarView.delegate = self
         calendarView.dataSource = self
-
+        
     }
     
     func setupChart() {
         let dataPoints = TrackHabitHelpers.getCompletionCounts(forLastNDays: 7)
-            
-            let entries = dataPoints.enumerated().map { (index, item) in
-                return BarChartDataEntry(x: Double(index), y: Double(item.count))
-            }
-            
-            let dataSet = BarChartDataSet(entries: entries, label: "Habits Completed")
-            dataSet.colors = ChartColorTemplates.pastel()
-            
-            let data = BarChartData(dataSet: dataSet)
-          barChatView.data = data
-        data.barWidth = 0.4
-
-            
-            // Customize
-        barChatView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints.map {
-                DateFormatter.shortWeekday.string(from: $0.date)
-            })
-        barChatView.xAxis.granularity = 1
+        
+        let entries = dataPoints.enumerated().map { (index, item) in
+            return BarChartDataEntry(x: Double(index), y: Double(item.count))
         }
+        
+        let dataSet = BarChartDataSet(entries: entries, label: "Habits Completed")
+        dataSet.colors = ChartColorTemplates.pastel()
+        
+        let data = BarChartData(dataSet: dataSet)
+        barChatView.data = data
+        data.barWidth = 0.4
+        
+        
+        // Customize
+        barChatView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints.map {
+            DateFormatter.shortWeekday.string(from: $0.date)
+        })
+        barChatView.xAxis.granularity = 1
+    }
     
     func fetchHabbits(){
         selectedDate = Date() // Default date = today
         habitList = DataBaseHelper.sharedInstance.getHabitData()
         filterHabits(for: selectedDate)
-       // userTableView.reloadData()
+        // userTableView.reloadData()
         
     }
     func refreshPage() {
@@ -113,7 +118,7 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     func filterHabits(for date: Date) {
         print("\(date)")
         filteredHabits = habitList.filter { habit in
-          //  guard let frequency = habit.frequencyData else { return false }
+            //  guard let frequency = habit.frequencyData else { return false }
             
             switch habit.frequencyData {
             case .daily:
@@ -123,25 +128,25 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
                     return days.contains(TrackHabitHelpers.weekdayMondayIsOne(date))
                 }
                 return false
-//                let match = habit.weeklyDays?.contains(weekday(from: date)) ?? false
-//                print("📅 Weekly \(habit.name ?? "") -> \(match)")
-//                return match
+                //                let match = habit.weeklyDays?.contains(weekday(from: date)) ?? false
+                //                print("📅 Weekly \(habit.name ?? "") -> \(match)")
+                //                return match
             case .monthly:
                 if let dates = habit.monthlyDates {
                     let targetDay = TrackHabitHelpers.dayOfMonth(date)
-                               return dates.contains { stored in
-                                   TrackHabitHelpers.dayOfMonth(stored) == targetDay
-                               }
-                           }
-                           return false
-
+                    return dates.contains { stored in
+                        TrackHabitHelpers.dayOfMonth(stored) == targetDay
+                    }
+                }
+                return false
+                
             default:
                 return false
             }
         }
         userTableView.reloadData()
     }
-
+    
     func weekday(from date: Date) -> Int {
         // Sunday = 1, Monday = 2, ... Saturday = 7
         
@@ -149,18 +154,18 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         let adjusted = (systemWeekDay + 5) % 7 + 1
         return adjusted
     }
-
+    
     func day(from date: Date) -> Int {
         // 1...31 (day of the month)
         return Calendar.current.component(.day, from: date)
     }
-
+    
     
     
     @IBAction func onClickPlusBtn(_ sender: Any) {
         let vc = AddHabitViewController()
         vc.dataPassDelegate = self
-//        present(vc, animated: true)
+        //        present(vc, animated: true)
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -168,20 +173,20 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     func OnClickCheckMArk(index: Int) {
         let habit = filteredHabits[index]
         let log = DataBaseHelper.sharedInstance.getOrCreateHabitLog(habit: habit, on: selectedDate)
-
-           log.isCompleted.toggle()
-           DataBaseHelper.sharedInstance.save(habit)
-           userTableView.reloadData() //reloadRows(at: index, with: .automatic)
-//
-//           do {
-//               try DataBaseHelper.sharedInstance.save(habit)
-//               tableView.reloadRows(at: [indexPath], with: .automatic)
-//           } catch {
-//               print("Save log failed: \(error)")
-//           }
+        
+        log.isCompleted.toggle()
+        DataBaseHelper.sharedInstance.save(habit)
+        userTableView.reloadData() //reloadRows(at: index, with: .automatic)
+        //
+        //           do {
+        //               try DataBaseHelper.sharedInstance.save(habit)
+        //               tableView.reloadRows(at: [indexPath], with: .automatic)
+        //           } catch {
+        //               print("Save log failed: \(error)")
+        //           }
     }
     
-  
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredHabits.count
     }
@@ -189,19 +194,19 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashBoardTableViewCell", for: indexPath) as! DashBoardTableViewCell
         let habit = filteredHabits[indexPath.row]
-
+        
         cell.bindData(data: habit, index: indexPath.row)
         cell.onCheckMarkTapped = self
         if let log = DataBaseHelper.sharedInstance.fetchHabitLog(habit: habit, on: selectedDate), log.isCompleted {
             cell.btnCheckMark.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-           } else {
-               cell.btnCheckMark.setImage(UIImage(systemName: "circle"), for: .normal)
-           }
+        } else {
+            cell.btnCheckMark.setImage(UIImage(systemName: "circle"), for: .normal)
+        }
         
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -220,20 +225,27 @@ class DashBoardViewController: UIViewController, UITableViewDataSource, UITableV
         if editingStyle == .delete {
             // Remove from data source
             let habitToDelete = filteredHabits[indexPath.row]
-                
-                // Delete from Core Data
-                DataBaseHelper.sharedInstance.deleteHabit(habit: habitToDelete)
-                
-                // Remove from both arrays
-                if let indexInAll = habitList.firstIndex(where: { $0.id == habitToDelete.id }) {
-                    habitList.remove(at: indexInAll)
-                }
-                filteredHabits.remove(at: indexPath.row)
+            
+            // Delete from Core Data
+            DataBaseHelper.sharedInstance.deleteHabit(habit: habitToDelete)
+            
+            // Remove from both arrays
+            if let indexInAll = habitList.firstIndex(where: { $0.id == habitToDelete.id }) {
+                habitList.remove(at: indexInAll)
+            }
+            filteredHabits.remove(at: indexPath.row)
             
             // Remove row from tableView with animation
             userTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    private func updateTableHeight() {
+        userTableView.layoutIfNeeded()
+
+        print("============")
+        print(userTableView.contentSize.height)
+        tableTopConstant.constant = userTableView.contentSize.height
+        }
 
 //    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
 //        <#code#>

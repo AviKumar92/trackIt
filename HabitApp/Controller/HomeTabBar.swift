@@ -18,11 +18,11 @@ class HomeTabBar : UITabBarController
         let viewController4 =  UINavigationController(rootViewController:UserProfileViewController())
         self.viewControllers = [viewController1, viewController2, viewController3, viewController4]
         
-        viewController1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "TabitemDiscover_Unselected")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(named: "TabitemDiscover_Unselected")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
+        viewController1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "TabitemDiscover_Unselected")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(named: "Selected_Home")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         
-        viewController2.tabBarItem = UITabBarItem(title: "Health", image: UIImage(named: "TabitemPlaylist_Unselected")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(systemName: "heart.fill")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
+        viewController2.tabBarItem = UITabBarItem(title: "Health", image: UIImage(named: "Favourite_Image")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(systemName: "heart.fill")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         
-        viewController3.tabBarItem = UITabBarItem(title: "Activity Tracker", image: UIImage(named: "TabitemPlaylist_Unselected")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(systemName: "figure.walk")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
+        viewController3.tabBarItem = UITabBarItem(title: "Activity Tracker", image: UIImage(named: "Running_Image")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(systemName: "figure.walk")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         viewController4.tabBarItem = UITabBarItem(title: "Pofile", image: UIImage(named: "TabitemLibrary_Unselected")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), selectedImage: UIImage(named: "TabitemLibrary_Unselected")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         
         
